@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LBL00 = new System.Windows.Forms.Label();
             this.LBL01 = new System.Windows.Forms.Label();
             this.LBL02 = new System.Windows.Forms.Label();
@@ -37,6 +38,11 @@
             this.LBL10 = new System.Windows.Forms.Label();
             this.LBL21 = new System.Windows.Forms.Label();
             this.LBL22 = new System.Windows.Forms.Label();
+            this.BTNDesordenar = new System.Windows.Forms.Button();
+            this.TMRReloj = new System.Windows.Forms.Timer(this.components);
+            this.LBLContador = new System.Windows.Forms.Label();
+            this.BTNGenerarHijos = new System.Windows.Forms.Button();
+            this.BTNEsFinal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LBL00
@@ -147,11 +153,62 @@
             this.LBL22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL22.Click += new System.EventHandler(this.LBL22_Click);
             // 
+            // BTNDesordenar
+            // 
+            this.BTNDesordenar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNDesordenar.Location = new System.Drawing.Point(440, 12);
+            this.BTNDesordenar.Name = "BTNDesordenar";
+            this.BTNDesordenar.Size = new System.Drawing.Size(131, 50);
+            this.BTNDesordenar.TabIndex = 9;
+            this.BTNDesordenar.Text = "Desordenar";
+            this.BTNDesordenar.UseVisualStyleBackColor = true;
+            this.BTNDesordenar.Click += new System.EventHandler(this.BTNDesordenar_Click);
+            // 
+            // TMRReloj
+            // 
+            this.TMRReloj.Tick += new System.EventHandler(this.TMRReloj_Tick);
+            // 
+            // LBLContador
+            // 
+            this.LBLContador.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.LBLContador.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLContador.Location = new System.Drawing.Point(441, 74);
+            this.LBLContador.Name = "LBLContador";
+            this.LBLContador.Size = new System.Drawing.Size(130, 130);
+            this.LBLContador.TabIndex = 10;
+            this.LBLContador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BTNGenerarHijos
+            // 
+            this.BTNGenerarHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNGenerarHijos.Location = new System.Drawing.Point(440, 217);
+            this.BTNGenerarHijos.Name = "BTNGenerarHijos";
+            this.BTNGenerarHijos.Size = new System.Drawing.Size(131, 50);
+            this.BTNGenerarHijos.TabIndex = 11;
+            this.BTNGenerarHijos.Text = "Generar Hijos";
+            this.BTNGenerarHijos.UseVisualStyleBackColor = true;
+            this.BTNGenerarHijos.Click += new System.EventHandler(this.BTNGenerarHijos_Click);
+            // 
+            // BTNEsFinal
+            // 
+            this.BTNEsFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNEsFinal.Location = new System.Drawing.Point(440, 273);
+            this.BTNEsFinal.Name = "BTNEsFinal";
+            this.BTNEsFinal.Size = new System.Drawing.Size(131, 50);
+            this.BTNEsFinal.TabIndex = 12;
+            this.BTNEsFinal.Text = "Es Final";
+            this.BTNEsFinal.UseVisualStyleBackColor = true;
+            this.BTNEsFinal.Click += new System.EventHandler(this.BTNEsFinal_Click);
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 429);
+            this.ClientSize = new System.Drawing.Size(602, 429);
+            this.Controls.Add(this.BTNEsFinal);
+            this.Controls.Add(this.BTNGenerarHijos);
+            this.Controls.Add(this.LBLContador);
+            this.Controls.Add(this.BTNDesordenar);
             this.Controls.Add(this.LBL22);
             this.Controls.Add(this.LBL21);
             this.Controls.Add(this.LBL10);
@@ -178,6 +235,11 @@
         private System.Windows.Forms.Label LBL10;
         private System.Windows.Forms.Label LBL21;
         private System.Windows.Forms.Label LBL22;
+        private System.Windows.Forms.Button BTNDesordenar;
+        private System.Windows.Forms.Timer TMRReloj;
+        private System.Windows.Forms.Label LBLContador;
+        private System.Windows.Forms.Button BTNGenerarHijos;
+        private System.Windows.Forms.Button BTNEsFinal;
     }
 }
 
