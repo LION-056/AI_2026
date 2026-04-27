@@ -43,6 +43,7 @@
             this.LBLContador = new System.Windows.Forms.Label();
             this.BTNGenerarHijos = new System.Windows.Forms.Button();
             this.BTNEsFinal = new System.Windows.Forms.Button();
+            this.BTNAnchuraPrioritaria = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LBL00
@@ -200,11 +201,23 @@
             this.BTNEsFinal.UseVisualStyleBackColor = true;
             this.BTNEsFinal.Click += new System.EventHandler(this.BTNEsFinal_Click);
             // 
+            // BTNAnchuraPrioritaria
+            // 
+            this.BTNAnchuraPrioritaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNAnchuraPrioritaria.Location = new System.Drawing.Point(440, 329);
+            this.BTNAnchuraPrioritaria.Name = "BTNAnchuraPrioritaria";
+            this.BTNAnchuraPrioritaria.Size = new System.Drawing.Size(131, 59);
+            this.BTNAnchuraPrioritaria.TabIndex = 13;
+            this.BTNAnchuraPrioritaria.Text = "Anchura Prioritaria";
+            this.BTNAnchuraPrioritaria.UseVisualStyleBackColor = true;
+            this.BTNAnchuraPrioritaria.Click += new System.EventHandler(this.BTNAnchuraPrioritaria_Click);
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 429);
+            this.Controls.Add(this.BTNAnchuraPrioritaria);
             this.Controls.Add(this.BTNEsFinal);
             this.Controls.Add(this.BTNGenerarHijos);
             this.Controls.Add(this.LBLContador);
@@ -240,6 +253,7 @@
         private System.Windows.Forms.Label LBLContador;
         private System.Windows.Forms.Button BTNGenerarHijos;
         private System.Windows.Forms.Button BTNEsFinal;
+        private System.Windows.Forms.Button BTNAnchuraPrioritaria;
     }
 }
 

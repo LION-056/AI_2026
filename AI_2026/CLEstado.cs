@@ -11,6 +11,7 @@ namespace AI_2026
         #region Campos
         private int[,] _tablero;
         private int _nivel;
+        private CLEstado _padre;
 
         #endregion
 
@@ -26,6 +27,11 @@ namespace AI_2026
             get => _nivel; 
             set => _nivel = value; 
         }
+        public CLEstado padre 
+        { 
+            get => _padre; 
+            set => _padre = value; 
+        }
 
         #endregion
 
@@ -38,6 +44,7 @@ namespace AI_2026
                 for (int j = 0; j < 3; j++)
                     this._tablero[i, j] = 0;
             this._nivel = 0;
+            this._padre = null;
 
         }
         public CLEstado(int p00, int p01, int p02,
@@ -56,6 +63,7 @@ namespace AI_2026
             this._tablero[1, 2] = p12;
             this._tablero[2, 2] = p22;
             this._nivel = 0;
+            this._padre = null;
         }
 
 
@@ -88,6 +96,8 @@ namespace AI_2026
                                               this._tablero[2, 0],
                                               this._tablero[2, 1],
                                               this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     A = new CLEstado(this._tablero[1, 0],
                                      this._tablero[0, 1],
@@ -98,6 +108,8 @@ namespace AI_2026
                                      this._tablero[2, 0],
                                      this._tablero[2, 1],
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);                        
                     break;
                 case "01":
@@ -111,6 +123,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // derecha
@@ -122,7 +136,9 @@ namespace AI_2026
                                      this._tablero[1, 2],
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
-                                     this._tablero[2, 2]);
+                                     this._tablero[2, 2]); 
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // abajo
@@ -135,6 +151,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -149,6 +167,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // abajo
@@ -161,6 +181,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -175,6 +197,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // derecha
@@ -187,6 +211,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // abajo
@@ -199,6 +225,8 @@ namespace AI_2026
                                      this._tablero[1, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -213,6 +241,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // abajo
@@ -225,6 +255,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[1, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // izquierda
@@ -237,6 +269,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // derecha
@@ -249,6 +283,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -263,6 +299,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // izquierda
@@ -275,6 +313,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // abajo
@@ -287,6 +327,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[1, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -301,6 +343,8 @@ namespace AI_2026
                                      this._tablero[1, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // derecha
@@ -313,6 +357,8 @@ namespace AI_2026
                                      this._tablero[2, 1], 
                                      this._tablero[2, 0], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -327,6 +373,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[1, 1], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // izquierda
@@ -339,6 +387,8 @@ namespace AI_2026
                                      this._tablero[2, 1], 
                                      this._tablero[2, 0], 
                                      this._tablero[2, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // derecha
@@ -351,6 +401,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 2], 
                                      this._tablero[2, 1]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
 
@@ -365,6 +417,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 1], 
                                      this._tablero[1, 2]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
 
                     // izquierda
@@ -377,6 +431,8 @@ namespace AI_2026
                                      this._tablero[2, 0], 
                                      this._tablero[2, 2], 
                                      this._tablero[2, 1]);
+                    A.nivel = this.nivel + 1;
+                    A.padre = this;
                     Respuesta.Add(A);
                     break;
             }
@@ -399,6 +455,21 @@ namespace AI_2026
                 res = true;
             }
             return res;
+        }
+
+        public bool EsIgual(CLEstado a)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (a.tablero[i, j] != this.tablero[i, j])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         #endregion
 
