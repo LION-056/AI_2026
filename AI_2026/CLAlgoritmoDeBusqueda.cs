@@ -35,11 +35,10 @@ namespace AI_2026
 
             if (Actual.EsFinal())
             {
-                Solucion.Add(Actual);
-                while (Actual.padre != null)
+                while (Actual != null)
                 {
-                    Solucion.Add(Actual.padre);
-                    Actual= Actual.padre;
+                    Solucion.Insert(0, Actual);
+                    Actual = Actual.padre;
                 }
             }
             return Solucion;            

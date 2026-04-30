@@ -44,6 +44,7 @@
             this.BTNGenerarHijos = new System.Windows.Forms.Button();
             this.BTNEsFinal = new System.Windows.Forms.Button();
             this.BTNAnchuraPrioritaria = new System.Windows.Forms.Button();
+            this.TMRSolucion = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // LBL00
@@ -212,6 +213,11 @@
             this.BTNAnchuraPrioritaria.UseVisualStyleBackColor = true;
             this.BTNAnchuraPrioritaria.Click += new System.EventHandler(this.BTNAnchuraPrioritaria_Click);
             // 
+            // TMRSolucion
+            // 
+            this.TMRSolucion.Interval = 500;
+            this.TMRSolucion.Tick += new System.EventHandler(this.TMRSolucion_Tick);
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +260,7 @@
         private System.Windows.Forms.Button BTNGenerarHijos;
         private System.Windows.Forms.Button BTNEsFinal;
         private System.Windows.Forms.Button BTNAnchuraPrioritaria;
+        private System.Windows.Forms.Timer TMRSolucion;
     }
 }
 
