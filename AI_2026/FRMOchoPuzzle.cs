@@ -17,6 +17,7 @@ namespace AI_2026
         private String[,] posiciones;
         private List<CLEstado> Solucion; //Puse
         private int PasoSolucion; //Puse
+        private CLEstado IniGuardado; //Puse
 
         public FRMOchoPuzzle()
         {
@@ -480,10 +481,11 @@ namespace AI_2026
                                             Convert.ToInt32(LBL21.Text),
                                             Convert.ToInt32(LBL22.Text)
                                            );
+            IniGuardado = Inicial;
             Solucion = CLAlgoritmoDeBusqueda.AnchuraPrioritaria(Inicial);
             if(Solucion.Count > 0)
             {
-                MessageBox.Show("Solución Encontrada");
+                MessageBox.Show("Solución Encontrada"+"\n"+"En el Nivel: " + (Solucion.Count - 1));
 
                 PasoSolucion = 0;
                 TMRSolucion.Enabled = true;
@@ -513,6 +515,7 @@ namespace AI_2026
                 LBL21.Text = A.tablero[2, 1].ToString();
                 LBL22.Text = A.tablero[2, 2].ToString();
 
+                MostrarEstado(Solucion[PasoSolucion]);
                 PasoSolucion++;
             }
             else
@@ -520,8 +523,23 @@ namespace AI_2026
                 TMRSolucion.Enabled = false;
 
                 MessageBox.Show("Final Encontrado");
+                MostrarEstado(IniGuardado);
             }
         }
 
+        private void MostrarEstado(CLEstado E)
+        {
+            LBL00.Text = E.tablero[0, 0].ToString();
+            LBL01.Text = E.tablero[0, 1].ToString();
+            LBL02.Text = E.tablero[0, 2].ToString();
+
+            LBL10.Text = E.tablero[1, 0].ToString();
+            LBL11.Text = E.tablero[1, 1].ToString();
+            LBL12.Text = E.tablero[1, 2].ToString();
+
+            LBL20.Text = E.tablero[2, 0].ToString();
+            LBL21.Text = E.tablero[2, 1].ToString();
+            LBL22.Text = E.tablero[2, 2].ToString();
+        }
     }
 }
