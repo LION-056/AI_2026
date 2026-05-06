@@ -18,6 +18,7 @@ namespace AI_2026
         private List<CLEstado> Solucion; //Puse
         private int PasoSolucion; //Puse
         private CLEstado IniGuardado; //Puse
+        private bool Regreso = false;
 
         public FRMOchoPuzzle()
         {
@@ -499,47 +500,71 @@ namespace AI_2026
 
         private void TMRSolucion_Tick(object sender, EventArgs e)
         {
-            if (PasoSolucion < Solucion.Count)
+            // resuelve
+            if (!Regreso)
             {
-                CLEstado A = Solucion[PasoSolucion];
+                if (PasoSolucion < Solucion.Count)
+                {
+                    CLEstado A = Solucion[PasoSolucion];
 
-                LBL00.Text = A.tablero[0, 0].ToString();
-                LBL01.Text = A.tablero[0, 1].ToString();
-                LBL02.Text = A.tablero[0, 2].ToString();
+                    LBL00.Text = A.tablero[0, 0].ToString();
+                    LBL01.Text = A.tablero[0, 1].ToString();
+                    LBL02.Text = A.tablero[0, 2].ToString();
 
-                LBL10.Text = A.tablero[1, 0].ToString();
-                LBL11.Text = A.tablero[1, 1].ToString();
-                LBL12.Text = A.tablero[1, 2].ToString();
+                    LBL10.Text = A.tablero[1, 0].ToString();
+                    LBL11.Text = A.tablero[1, 1].ToString();
+                    LBL12.Text = A.tablero[1, 2].ToString();
 
-                LBL20.Text = A.tablero[2, 0].ToString();
-                LBL21.Text = A.tablero[2, 1].ToString();
-                LBL22.Text = A.tablero[2, 2].ToString();
+                    LBL20.Text = A.tablero[2, 0].ToString();
+                    LBL21.Text = A.tablero[2, 1].ToString();
+                    LBL22.Text = A.tablero[2, 2].ToString();
 
-                MostrarEstado(Solucion[PasoSolucion]);
-                PasoSolucion++;
+                    PasoSolucion++;
+                }
+                else
+                {
+                    TMRSolucion.Enabled = false;
+
+                    MessageBox.Show("Final Encontrado");
+
+                    // Prepara regreso
+                    Solucion.Reverse();
+                    PasoSolucion = 0;
+                    Regreso = true; 
+                    //
+                    TMRSolucion.Enabled = true;
+                }
             }
+            // regresa
             else
             {
-                TMRSolucion.Enabled = false;
+                if (PasoSolucion < Solucion.Count)
+                {
+                    CLEstado A = Solucion[PasoSolucion];
 
-                MessageBox.Show("Final Encontrado");
-                MostrarEstado(IniGuardado);
+                    LBL00.Text = A.tablero[0, 0].ToString();
+                    LBL01.Text = A.tablero[0, 1].ToString();
+                    LBL02.Text = A.tablero[0, 2].ToString();
+
+                    LBL10.Text = A.tablero[1, 0].ToString();
+                    LBL11.Text = A.tablero[1, 1].ToString();
+                    LBL12.Text = A.tablero[1, 2].ToString();
+
+                    LBL20.Text = A.tablero[2, 0].ToString();
+                    LBL21.Text = A.tablero[2, 1].ToString();
+                    LBL22.Text = A.tablero[2, 2].ToString();
+
+                    PasoSolucion++;
+                }
+                else
+                {
+                    TMRSolucion.Enabled = false;
+                    //
+                    Solucion.Reverse();
+                    Regreso = false;
+                }
             }
         }
 
-        private void MostrarEstado(CLEstado E)
-        {
-            LBL00.Text = E.tablero[0, 0].ToString();
-            LBL01.Text = E.tablero[0, 1].ToString();
-            LBL02.Text = E.tablero[0, 2].ToString();
-
-            LBL10.Text = E.tablero[1, 0].ToString();
-            LBL11.Text = E.tablero[1, 1].ToString();
-            LBL12.Text = E.tablero[1, 2].ToString();
-
-            LBL20.Text = E.tablero[2, 0].ToString();
-            LBL21.Text = E.tablero[2, 1].ToString();
-            LBL22.Text = E.tablero[2, 2].ToString();
-        }
     }
 }
