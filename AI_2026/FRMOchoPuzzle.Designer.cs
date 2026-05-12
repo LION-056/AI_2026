@@ -45,6 +45,9 @@
             this.BTNEsFinal = new System.Windows.Forms.Button();
             this.BTNAnchuraPrioritaria = new System.Windows.Forms.Button();
             this.TMRSolucion = new System.Windows.Forms.Timer(this.components);
+            this.BTNProfundidadLimitada = new System.Windows.Forms.Button();
+            this.NUDLimitada = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDLimitada)).BeginInit();
             this.SuspendLayout();
             // 
             // LBL00
@@ -174,16 +177,16 @@
             // 
             this.LBLContador.BackColor = System.Drawing.Color.LightSkyBlue;
             this.LBLContador.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLContador.Location = new System.Drawing.Point(441, 74);
+            this.LBLContador.Location = new System.Drawing.Point(441, 70);
             this.LBLContador.Name = "LBLContador";
-            this.LBLContador.Size = new System.Drawing.Size(130, 130);
+            this.LBLContador.Size = new System.Drawing.Size(130, 113);
             this.LBLContador.TabIndex = 10;
             this.LBLContador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BTNGenerarHijos
             // 
             this.BTNGenerarHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNGenerarHijos.Location = new System.Drawing.Point(440, 217);
+            this.BTNGenerarHijos.Location = new System.Drawing.Point(440, 191);
             this.BTNGenerarHijos.Name = "BTNGenerarHijos";
             this.BTNGenerarHijos.Size = new System.Drawing.Size(131, 50);
             this.BTNGenerarHijos.TabIndex = 11;
@@ -194,7 +197,7 @@
             // BTNEsFinal
             // 
             this.BTNEsFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNEsFinal.Location = new System.Drawing.Point(440, 273);
+            this.BTNEsFinal.Location = new System.Drawing.Point(577, 12);
             this.BTNEsFinal.Name = "BTNEsFinal";
             this.BTNEsFinal.Size = new System.Drawing.Size(131, 50);
             this.BTNEsFinal.TabIndex = 12;
@@ -205,7 +208,7 @@
             // BTNAnchuraPrioritaria
             // 
             this.BTNAnchuraPrioritaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNAnchuraPrioritaria.Location = new System.Drawing.Point(440, 329);
+            this.BTNAnchuraPrioritaria.Location = new System.Drawing.Point(440, 247);
             this.BTNAnchuraPrioritaria.Name = "BTNAnchuraPrioritaria";
             this.BTNAnchuraPrioritaria.Size = new System.Drawing.Size(131, 59);
             this.BTNAnchuraPrioritaria.TabIndex = 13;
@@ -218,11 +221,36 @@
             this.TMRSolucion.Interval = 500;
             this.TMRSolucion.Tick += new System.EventHandler(this.TMRSolucion_Tick);
             // 
+            // BTNProfundidadLimitada
+            // 
+            this.BTNProfundidadLimitada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNProfundidadLimitada.Location = new System.Drawing.Point(577, 247);
+            this.BTNProfundidadLimitada.Name = "BTNProfundidadLimitada";
+            this.BTNProfundidadLimitada.Size = new System.Drawing.Size(104, 59);
+            this.BTNProfundidadLimitada.TabIndex = 14;
+            this.BTNProfundidadLimitada.Text = "Profundidad Limitada";
+            this.BTNProfundidadLimitada.UseVisualStyleBackColor = true;
+            this.BTNProfundidadLimitada.Click += new System.EventHandler(this.BTNProfundidadLimitada_Click);
+            // 
+            // NUDLimitada
+            // 
+            this.NUDLimitada.Location = new System.Drawing.Point(577, 221);
+            this.NUDLimitada.Name = "NUDLimitada";
+            this.NUDLimitada.Size = new System.Drawing.Size(104, 20);
+            this.NUDLimitada.TabIndex = 15;
+            this.NUDLimitada.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 429);
+            this.ClientSize = new System.Drawing.Size(720, 429);
+            this.Controls.Add(this.NUDLimitada);
+            this.Controls.Add(this.BTNProfundidadLimitada);
             this.Controls.Add(this.BTNAnchuraPrioritaria);
             this.Controls.Add(this.BTNEsFinal);
             this.Controls.Add(this.BTNGenerarHijos);
@@ -239,6 +267,7 @@
             this.Controls.Add(this.LBL00);
             this.Name = "FRMOchoPuzzle";
             this.Text = "8 Puzzle";
+            ((System.ComponentModel.ISupportInitialize)(this.NUDLimitada)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,6 +290,8 @@
         private System.Windows.Forms.Button BTNEsFinal;
         private System.Windows.Forms.Button BTNAnchuraPrioritaria;
         private System.Windows.Forms.Timer TMRSolucion;
+        private System.Windows.Forms.Button BTNProfundidadLimitada;
+        private System.Windows.Forms.NumericUpDown NUDLimitada;
     }
 }
 

@@ -18,7 +18,7 @@ namespace AI_2026
         private List<CLEstado> Solucion; //Puse
         private int PasoSolucion; //Puse
         private CLEstado IniGuardado; //Puse
-        private bool Regreso = false;
+        private bool Regreso = false; //Puse
 
         public FRMOchoPuzzle()
         {
@@ -563,6 +563,39 @@ namespace AI_2026
                     Solucion.Reverse();
                     Regreso = false;
                 }
+            }
+        }
+
+        private void BTNProfundidadLimitada_Click(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(
+                            Convert.ToInt32(LBL00.Text),
+                            Convert.ToInt32(LBL01.Text),
+                            Convert.ToInt32(LBL02.Text),
+                            Convert.ToInt32(LBL10.Text),
+                            Convert.ToInt32(LBL11.Text),
+                            Convert.ToInt32(LBL12.Text),
+                            Convert.ToInt32(LBL20.Text),
+                            Convert.ToInt32(LBL21.Text),
+                            Convert.ToInt32(LBL22.Text)
+                            );
+
+            int Limite = Convert.ToInt32(NUDLimitada.Value);
+            Solucion = CLAlgoritmoDeBusqueda.ProfundidadLimitada(Inicial, Limite);
+
+            if (Solucion.Count > 0)
+            {
+                if (Solucion[Solucion.Count - 1].EsFinal())
+                {
+                    MessageBox.Show("Solución Encontrada" +"\n"+ "En el Nivel: " + (Solucion.Count - 1));
+                }
+                else
+                {
+                    MessageBox.Show("Solución No Encontrada dentro del límite" +"\n" + "Último Nivel Alcanzado: " + (Solucion.Count - 1));
+                }
+                PasoSolucion = 0;
+                Regreso = false;
+                TMRSolucion.Enabled = true;
             }
         }
 
