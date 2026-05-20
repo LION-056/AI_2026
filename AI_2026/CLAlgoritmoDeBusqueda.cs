@@ -84,38 +84,45 @@ namespace AI_2026
         public static List<CLEstado> ProfundidadLimitada(CLEstado Inicial, int Limite)
         {
             // Definición de Variables
-
             List<CLEstado> Solucion = new List<CLEstado>();
             List<CLEstado> Abiertos = new List<CLEstado>();
             List<CLEstado> Cerrados = new List<CLEstado>();
             List<CLEstado> Hijos = new List<CLEstado>();
             CLEstado Actual = new CLEstado();
+            CLEstado MasProfundo = Inicial;
+
             // Algoritmo
-
             Abiertos.Add(Inicial);
-            Actual = Abiertos[Abiertos.Count-1];
-
-            while (!Actual.EsFinal() && Abiertos.Count > 0)
+            while (Abiertos.Count > 0)
             {
-                Cerrados.Add(Actual);
+                Actual = Abiertos[Abiertos.Count - 1];
                 Abiertos.RemoveAt(Abiertos.Count - 1);
-                if (Actual.nivel <= Limite)
+
+                Cerrados.Add(Actual);
+
+                if (Actual.nivel > MasProfundo.nivel)
+                {
+                    MasProfundo = Actual;
+                }
+
+                if (Actual.EsFinal())
+                {
+                    MasProfundo = Actual;
+                    break;
+                }
+                if (Actual.nivel < Limite)
                 {
                     Hijos = Actual.GenerarHijos();
                     Hijos = TratarRepetidosProfundidad(Hijos, Abiertos, Cerrados);
+
                     foreach (CLEstado a in Hijos)
                         Abiertos.Add(a);
                 }
-                Actual = Abiertos[Abiertos.Count - 1];
             }
-
-            if (Actual.EsFinal())
+            while (MasProfundo != null)
             {
-                while (Actual != null)
-                {
-                    Solucion.Insert(0, Actual);
-                    Actual = Actual.padre;
-                }
+                Solucion.Insert(0, MasProfundo);
+                MasProfundo = MasProfundo.padre;
             }
             return Solucion;
         }
@@ -157,7 +164,98 @@ namespace AI_2026
             }
             return HijosDepurados;
         }
-        
+
+        public static List<CLEstado> ProfundidadIterativa(CLEstado Inicial, int Limite)
+        {
+            // Definición de variables
+            List<CLEstado> Solucion = new List<CLEstado>();
+            List<CLEstado> Abiertos = new List<CLEstado>();
+            List<CLEstado> Cerrados = new List<CLEstado>();
+            List<CLEstado> Hijos = new List<CLEstado>();
+            CLEstado Actual = new CLEstado();
+
+            int prof = -1;
+
+            // Algoritmo
+            while (Solucion.Count == 0 && prof < Limite)
+            {
+                prof++;
+                Abiertos = new List<CLEstado>();
+                Cerrados = new List<CLEstado>();
+                Hijos = new List<CLEstado>();
+
+                Abiertos.Add(Inicial);
+                Actual = Abiertos[Abiertos.Count - 1];
+
+                while (!Actual.EsFinal() && Abiertos.Count > 0)
+                {
+                    Cerrados.Add(Actual);
+                    Abiertos.RemoveAt(Abiertos.Count - 1);
+
+                    if (Actual.nivel < prof)
+                    {
+                        Hijos = Actual.GenerarHijos();
+                        Hijos = TratarRepetidosProfundidadIterativa(Hijos, Abiertos, Cerrados);
+
+                        foreach (CLEstado a in Hijos)
+                            Abiertos.Add(a);
+                    }
+
+                    if (Abiertos.Count > 0)
+                        Actual = Abiertos[Abiertos.Count - 1];
+                }
+                if (Actual.EsFinal())
+                {
+                    while (Actual != null)
+                    {
+                        Solucion.Insert(0, Actual);
+                        Actual = Actual.padre;
+                    }
+                }
+            }
+            return Solucion;
+        }
+
+        private static List<CLEstado> TratarRepetidosProfundidadIterativa(List<CLEstado> hijos, List<CLEstado> abiertos, List<CLEstado> cerrados)
+        {
+            List<CLEstado> HijosDepurados = new List<CLEstado>();
+            bool Encontrado = false;
+
+            foreach (CLEstado hijo in hijos)
+            {
+                Encontrado = false;
+
+                //Comparar con abiertos
+                foreach (var a in abiertos)
+                {
+                    if (hijo.EsIgual(a))
+                    {
+                        Encontrado = true; 
+                        break;
+                    }
+                }
+
+                if (Encontrado) continue;
+
+                // comparar con cerrados
+                foreach (var c in cerrados)
+                {
+                    if (hijo.EsIgual(c))
+                    {
+                        if (hijo.nivel >= c.nivel)
+                            Encontrado = true; 
+                        break;
+                    }
+                }
+
+                if (!Encontrado)
+                {
+                    HijosDepurados.Add(hijo);
+                }
+            }
+            return HijosDepurados;
+        }
+         
 
     }
 }

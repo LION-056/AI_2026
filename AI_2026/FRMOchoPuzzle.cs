@@ -19,6 +19,7 @@ namespace AI_2026
         private int PasoSolucion; //Puse
         private CLEstado IniGuardado; //Puse
         private bool Regreso = false; //Puse
+        private bool SolucionReal = false; //Puse
 
         public FRMOchoPuzzle()
         {
@@ -525,13 +526,15 @@ namespace AI_2026
                 {
                     TMRSolucion.Enabled = false;
 
-                    MessageBox.Show("Final Encontrado");
+                    if (SolucionReal)
+                        MessageBox.Show("Final Encontrado");
+                    else
+                        MessageBox.Show("No se llegó al estado final por el límite");
 
                     // Prepara regreso
                     Solucion.Reverse();
                     PasoSolucion = 0;
                     Regreso = true; 
-                    //
                     TMRSolucion.Enabled = true;
                 }
             }
@@ -559,7 +562,6 @@ namespace AI_2026
                 else
                 {
                     TMRSolucion.Enabled = false;
-                    //
                     Solucion.Reverse();
                     Regreso = false;
                 }
@@ -568,34 +570,68 @@ namespace AI_2026
 
         private void BTNProfundidadLimitada_Click(object sender, EventArgs e)
         {
-            CLEstado Inicial = new CLEstado(
-                            Convert.ToInt32(LBL00.Text),
-                            Convert.ToInt32(LBL01.Text),
-                            Convert.ToInt32(LBL02.Text),
-                            Convert.ToInt32(LBL10.Text),
-                            Convert.ToInt32(LBL11.Text),
-                            Convert.ToInt32(LBL12.Text),
-                            Convert.ToInt32(LBL20.Text),
-                            Convert.ToInt32(LBL21.Text),
-                            Convert.ToInt32(LBL22.Text)
-                            );
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                           );
 
             int Limite = Convert.ToInt32(NUDLimitada.Value);
             Solucion = CLAlgoritmoDeBusqueda.ProfundidadLimitada(Inicial, Limite);
 
             if (Solucion.Count > 0)
             {
-                if (Solucion[Solucion.Count - 1].EsFinal())
+                SolucionReal = Solucion[Solucion.Count - 1].EsFinal();
+
+                if (SolucionReal)
                 {
-                    MessageBox.Show("Solución Encontrada" +"\n"+ "En el Nivel: " + (Solucion.Count - 1));
+                    MessageBox.Show(
+                        "Solución Encontrada" + "\nEn el Nivel: " + (Solucion.Count - 1));
                 }
                 else
                 {
-                    MessageBox.Show("Solución No Encontrada dentro del límite" +"\n" + "Último Nivel Alcanzado: " + (Solucion.Count - 1));
+                    MessageBox.Show(
+                        "Solución No Encontrada dentro del límite" + "\nÚltimo Nivel Alcanzado: " + (Solucion.Count - 1));
                 }
                 PasoSolucion = 0;
                 Regreso = false;
                 TMRSolucion.Enabled = true;
+            }
+        }
+
+        private void BTNProfundidadIterativa_Click(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                           );
+
+            int Limite = Convert.ToInt32(NUDLimitadaIterativa.Value);
+            Solucion = CLAlgoritmoDeBusqueda.ProfundidadIterativa(Inicial, Limite);
+
+            if (Solucion.Count > 0)
+            {
+                SolucionReal = true;
+                MessageBox.Show("Solución Encontrada" + "\nEn el Nivel: " + (Solucion.Count - 1));
+                PasoSolucion = 0;
+                Regreso = false;
+                TMRSolucion.Enabled = true;
+            }
+            else
+            {
+                SolucionReal = false;
+                MessageBox.Show("Solución No Encontrada dentro del límite");
             }
         }
 
