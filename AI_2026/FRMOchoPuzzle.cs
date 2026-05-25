@@ -619,17 +619,29 @@ namespace AI_2026
 
             int Limite = Convert.ToInt32(NUDLimitadaIterativa.Value);
             Solucion = CLAlgoritmoDeBusqueda.ProfundidadIterativa(Inicial, Limite);
-
             if (Solucion.Count > 0)
             {
+                int NivelSolucion = Solucion.Count - 1;
+
+                for (int i = 1; i < NivelSolucion; i++)
+                {
+                    MessageBox.Show("Solución No Encontrada" + "\nEn el Nivel: " + i);
+                }
+
+                MessageBox.Show("Solución Encontrada" + "\nEn el Nivel: " + NivelSolucion);
+
                 SolucionReal = true;
-                MessageBox.Show("Solución Encontrada" + "\nEn el Nivel: " + (Solucion.Count - 1));
                 PasoSolucion = 0;
                 Regreso = false;
                 TMRSolucion.Enabled = true;
             }
             else
             {
+                for (int i = 1; i <= Limite; i++)
+                {
+                    MessageBox.Show("Solución NO Encontrada" + "\nEn el Nivel: " + i);
+                }
+
                 SolucionReal = false;
                 MessageBox.Show("Solución No Encontrada dentro del límite");
             }
