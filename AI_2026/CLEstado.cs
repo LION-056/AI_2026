@@ -473,78 +473,98 @@ namespace AI_2026
         }
         #endregion
 
-        public int H1() 
+        public int H1()
         {
-            int h1 = 0;
+            int piezasFueraDeLugar = 0;
 
-            int[,] objetivo =
+            int[,] estadoMeta =
             {
-                { 1, 2, 3 },
-                { 8, 0, 4 },
-                { 7, 6, 5 }
+                {1, 2, 3},
+                {8, 0, 4},
+                {7, 6, 5}
             };
 
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    if (_tablero[i, j] != 0 && _tablero[i, j] != objetivo[i, j])
-                        h1++;
-            return 0;
+            for (int fila = 0; fila < 3; fila++)
+            {
+                for (int columna = 0; columna < 3; columna++)
+                {
+                    if (_tablero[fila, columna] != 0 &&
+                        _tablero[fila, columna] != estadoMeta[fila, columna])
+                    {
+                        piezasFueraDeLugar++;
+                    }
+                }
+            }
+            return piezasFueraDeLugar;
         }
 
         public int H2()
         {
-            int h2 = 0;
-
-            int[] filaFinal = { 1, 0, 0, 0, 1, 2, 2, 2, 1 };
-            int[] colFinal = { 1, 0, 1, 2, 2, 2, 1, 0, 0 };
-
-            for (int i = 0; i < 3; i++)
+            int distanciaTotal = 0;
+            int[,] estadoMeta =
             {
-                for (int j = 0; j < 3; j++)
-                {
-                    int ficha = _tablero[i, j];
+                {1, 2, 3},
+                {8, 0, 4},
+                {7, 6, 5}
+            };
 
-                    if (ficha != 0)
-                        h2 += Math.Abs(i - filaFinal[ficha]) + Math.Abs(j - colFinal[ficha]);
+            for (int fila = 0; fila < 3; fila++)
+            {
+                for (int columna = 0; columna < 3; columna++)
+                {
+                    int valor = _tablero[fila, columna];
+                    if (valor == 0)
+                        continue;
+                    int filaMeta = 0;
+                    int columnaMeta = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            if (estadoMeta[i, j] == valor)
+                            {
+                                filaMeta = i;
+                                columnaMeta = j;
+                            }
+                        }
+                    }
+                    distanciaTotal += Math.Abs(fila - filaMeta) + Math.Abs(columna - columnaMeta);
                 }
             }
-            return 0;
+            return distanciaTotal;
         }
 
         public int H3()
+
         {
-            int s = 0;
-
-            int[] camino =
+            int sumaS = 0;
+            int[] borde =
             {
-                _tablero[0, 0],
-                _tablero[0, 1],
-                _tablero[0, 2],
-                _tablero[1, 2],
-                _tablero[2, 2],
-                _tablero[2, 1],
-                _tablero[2, 0],
-                _tablero[1, 0]
+                _tablero[0,0],
+                _tablero[0,1],
+                _tablero[0,2],
+                _tablero[1,2],
+                _tablero[2,2],
+                _tablero[2,1],
+                _tablero[2,0],
+                _tablero[1,0]
             };
-
             for (int i = 0; i < 8; i++)
             {
-                int actual = camino[i];
-                int siguiente = camino[(i + 1) % 8];
+                int actual = borde[i];
+                if (actual == 0)
+                    continue;
+                int siguiente = borde[(i + 1) % 8];
+                int sucesorCorrecto = (actual == 8) ? 1 : actual + 1;
 
-                if (actual != 0)
-                {
-                    int sucesor = actual == 8 ? 1 : actual + 1;
-
-                    if (siguiente != sucesor)
-                        s += 2;
-                }
+                if (siguiente == sucesorCorrecto)
+                    sumaS += 0;
+                else
+                    sumaS += 2;
             }
-
             if (_tablero[1, 1] != 0)
-                s++;
-
-            return H2() + (3 * s);
+                sumaS += 1;
+            return H2() + sumaS;
         }
 
     }

@@ -49,6 +49,9 @@
             this.NUDLimitada = new System.Windows.Forms.NumericUpDown();
             this.BTNProfundidadIterativa = new System.Windows.Forms.Button();
             this.NUDLimitadaIterativa = new System.Windows.Forms.NumericUpDown();
+            this.BTNH1 = new System.Windows.Forms.Button();
+            this.BTNH2 = new System.Windows.Forms.Button();
+            this.BTNH3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NUDLimitada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDLimitadaIterativa)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +117,7 @@
             this.LBL11.Name = "LBL11";
             this.LBL11.Size = new System.Drawing.Size(130, 130);
             this.LBL11.TabIndex = 4;
-            this.LBL11.Text = "5";
+            this.LBL11.Text = "0";
             this.LBL11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL11.Click += new System.EventHandler(this.LBL11_Click);
             // 
@@ -127,7 +130,7 @@
             this.LBL12.Name = "LBL12";
             this.LBL12.Size = new System.Drawing.Size(130, 130);
             this.LBL12.TabIndex = 5;
-            this.LBL12.Text = "6";
+            this.LBL12.Text = "4";
             this.LBL12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL12.Click += new System.EventHandler(this.LBL12_Click);
             // 
@@ -140,7 +143,7 @@
             this.LBL10.Name = "LBL10";
             this.LBL10.Size = new System.Drawing.Size(130, 130);
             this.LBL10.TabIndex = 6;
-            this.LBL10.Text = "4";
+            this.LBL10.Text = "8";
             this.LBL10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL10.Click += new System.EventHandler(this.LBL10_Click);
             // 
@@ -153,7 +156,7 @@
             this.LBL21.Name = "LBL21";
             this.LBL21.Size = new System.Drawing.Size(130, 130);
             this.LBL21.TabIndex = 7;
-            this.LBL21.Text = "8";
+            this.LBL21.Text = "6";
             this.LBL21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL21.Click += new System.EventHandler(this.LBL21_Click);
             // 
@@ -166,7 +169,7 @@
             this.LBL22.Name = "LBL22";
             this.LBL22.Size = new System.Drawing.Size(130, 130);
             this.LBL22.TabIndex = 8;
-            this.LBL22.Text = "0";
+            this.LBL22.Text = "5";
             this.LBL22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LBL22.Click += new System.EventHandler(this.LBL22_Click);
             // 
@@ -288,11 +291,50 @@
             0,
             0});
             // 
+            // BTNH1
+            // 
+            this.BTNH1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNH1.Location = new System.Drawing.Point(574, 9);
+            this.BTNH1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BTNH1.Name = "BTNH1";
+            this.BTNH1.Size = new System.Drawing.Size(77, 45);
+            this.BTNH1.TabIndex = 18;
+            this.BTNH1.Text = "H1";
+            this.BTNH1.UseVisualStyleBackColor = true;
+            this.BTNH1.Click += new System.EventHandler(this.BTNH1_Click_1);
+            // 
+            // BTNH2
+            // 
+            this.BTNH2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNH2.Location = new System.Drawing.Point(574, 60);
+            this.BTNH2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BTNH2.Name = "BTNH2";
+            this.BTNH2.Size = new System.Drawing.Size(77, 45);
+            this.BTNH2.TabIndex = 19;
+            this.BTNH2.Text = "H2";
+            this.BTNH2.UseVisualStyleBackColor = true;
+            this.BTNH2.Click += new System.EventHandler(this.BTNH2_Click_1);
+            // 
+            // BTNH3
+            // 
+            this.BTNH3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNH3.Location = new System.Drawing.Point(574, 111);
+            this.BTNH3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BTNH3.Name = "BTNH3";
+            this.BTNH3.Size = new System.Drawing.Size(77, 45);
+            this.BTNH3.TabIndex = 20;
+            this.BTNH3.Text = "H3";
+            this.BTNH3.UseVisualStyleBackColor = true;
+            this.BTNH3.Click += new System.EventHandler(this.BTNH3_Click_1);
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 435);
+            this.Controls.Add(this.BTNH3);
+            this.Controls.Add(this.BTNH2);
+            this.Controls.Add(this.BTNH1);
             this.Controls.Add(this.NUDLimitadaIterativa);
             this.Controls.Add(this.BTNProfundidadIterativa);
             this.Controls.Add(this.NUDLimitada);
@@ -343,6 +385,9 @@
         private System.Windows.Forms.NumericUpDown NUDLimitada;
         private System.Windows.Forms.Button BTNProfundidadIterativa;
         private System.Windows.Forms.NumericUpDown NUDLimitadaIterativa;
+        private System.Windows.Forms.Button BTNH1;
+        private System.Windows.Forms.Button BTNH2;
+        private System.Windows.Forms.Button BTNH3;
     }
 }
 

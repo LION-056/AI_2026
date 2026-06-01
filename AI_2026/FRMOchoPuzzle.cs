@@ -647,5 +647,50 @@ namespace AI_2026
             }
         }
 
+        private void BTNH1_Click_1(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                            );
+            MessageBox.Show(Inicial.H1().ToString());
+        }
+
+        private void BTNH2_Click_1(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                            );
+            MessageBox.Show(Inicial.H2().ToString());
+        }
+
+        private void BTNH3_Click_1(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                            );
+            MessageBox.Show(Inicial.H3().ToString());
+        }
+
     }
 }
