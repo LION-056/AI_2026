@@ -52,6 +52,7 @@
             this.BTNH1 = new System.Windows.Forms.Button();
             this.BTNH2 = new System.Windows.Forms.Button();
             this.BTNH3 = new System.Windows.Forms.Button();
+            this.BTNBusquedaHeuristica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NUDLimitada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDLimitadaIterativa)).BeginInit();
             this.SuspendLayout();
@@ -327,11 +328,24 @@
             this.BTNH3.UseVisualStyleBackColor = true;
             this.BTNH3.Click += new System.EventHandler(this.BTNH3_Click_1);
             // 
+            // BTNBusquedaHeuristica
+            // 
+            this.BTNBusquedaHeuristica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNBusquedaHeuristica.Location = new System.Drawing.Point(574, 262);
+            this.BTNBusquedaHeuristica.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BTNBusquedaHeuristica.Name = "BTNBusquedaHeuristica";
+            this.BTNBusquedaHeuristica.Size = new System.Drawing.Size(130, 50);
+            this.BTNBusquedaHeuristica.TabIndex = 21;
+            this.BTNBusquedaHeuristica.Text = "Heuristica_H3";
+            this.BTNBusquedaHeuristica.UseVisualStyleBackColor = true;
+            this.BTNBusquedaHeuristica.Click += new System.EventHandler(this.BTNBusquedaHeuristica_Click);
+            // 
             // FRMOchoPuzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 435);
+            this.ClientSize = new System.Drawing.Size(749, 435);
+            this.Controls.Add(this.BTNBusquedaHeuristica);
             this.Controls.Add(this.BTNH3);
             this.Controls.Add(this.BTNH2);
             this.Controls.Add(this.BTNH1);
@@ -388,6 +402,7 @@
         private System.Windows.Forms.Button BTNH1;
         private System.Windows.Forms.Button BTNH2;
         private System.Windows.Forms.Button BTNH3;
+        private System.Windows.Forms.Button BTNBusquedaHeuristica;
     }
 }
 

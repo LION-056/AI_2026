@@ -445,12 +445,12 @@ namespace AI_2026
             if (_tablero[0, 0] == 1 &&
                 _tablero[0, 1] == 2 &&
                 _tablero[0, 2] == 3 &&
-                _tablero[1, 0] == 4 &&
-                _tablero[1, 1] == 5 &&
-                _tablero[1, 2] == 6 &&
+                _tablero[1, 0] == 8 &&
+                _tablero[1, 1] == 0 &&
+                _tablero[1, 2] == 4 &&
                 _tablero[2, 0] == 7 &&
-                _tablero[2, 1] == 8 &&
-                _tablero[2, 2] == 0)
+                _tablero[2, 1] == 6 &&
+                _tablero[2, 2] == 5)
             {
                 res = true;
             }

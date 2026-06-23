@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -690,6 +691,37 @@ namespace AI_2026
                                             Convert.ToInt32(LBL22.Text)
                                             );
             MessageBox.Show(Inicial.H3().ToString());
+        }
+
+        private void BTNBusquedaHeuristica_Click(object sender, EventArgs e)
+        {
+            CLEstado Inicial = new CLEstado(Convert.ToInt32(LBL00.Text),
+                                            Convert.ToInt32(LBL01.Text),
+                                            Convert.ToInt32(LBL02.Text),
+                                            Convert.ToInt32(LBL10.Text),
+                                            Convert.ToInt32(LBL11.Text),
+                                            Convert.ToInt32(LBL12.Text),
+                                            Convert.ToInt32(LBL20.Text),
+                                            Convert.ToInt32(LBL21.Text),
+                                            Convert.ToInt32(LBL22.Text)
+                                           );
+
+            IniGuardado = Inicial;
+            Solucion = CLAlgoritmoDeBusqueda.Algoritmo_Heuristico_H3(Inicial);
+
+            if (Solucion.Count > 0)
+            {
+                MessageBox.Show("Solución Encontrada \n En el Nivel: " + (Solucion.Count - 1));
+                PasoSolucion = 0;
+                Regreso = false;
+                SolucionReal = true;
+
+                TMRSolucion.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Solución No Encontrada");
+            }
         }
 
     }

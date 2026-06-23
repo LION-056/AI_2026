@@ -255,7 +255,94 @@ namespace AI_2026
             }
             return HijosDepurados;
         }
-         
+
+        public static List<CLEstado> Algoritmo_Heuristico_H3(CLEstado Inicial)
+        {
+            // Definición de variables según tu estándar
+            List<CLEstado> Solucion = new List<CLEstado>();
+            List<CLEstado> Abiertos = new List<CLEstado>();
+            List<CLEstado> Cerrados = new List<CLEstado>();
+            List<CLEstado> Hijos = new List<CLEstado>();
+            CLEstado Actual = new CLEstado();
+
+            Abiertos.Add(Inicial);
+            Actual = Abiertos[0];
+
+            while (!Actual.EsFinal() && Abiertos.Count > 0)
+            {
+                Cerrados.Add(Actual);
+                Abiertos.RemoveAt(0);
+
+                Hijos = Actual.GenerarHijos();
+                Hijos = TratarRepetidosHeuristico(Hijos, Abiertos, Cerrados);
+
+                foreach (CLEstado a in Hijos) 
+                { 
+                    Abiertos.Add(a);              
+                }
+                if (Abiertos.Count > 0)
+                {
+                    Abiertos = Abiertos.OrderBy(x => x.nivel + x.H3()).ToList();
+                    Actual = Abiertos[0];
+                }
+            }
+
+            if (Actual.EsFinal())
+            {
+                while (Actual != null)
+                {
+                    Solucion.Insert(0, Actual);
+                    Actual = Actual.padre;
+                }
+            }
+            return Solucion;
+        }
+
+        private static List<CLEstado> TratarRepetidosHeuristico(List<CLEstado> hijos, List<CLEstado> abiertos, List<CLEstado> cerrados)
+        {
+            List<CLEstado> HijosDepurados = new List<CLEstado>();
+
+            foreach (CLEstado hijo in hijos)
+            {
+                bool Encontrado = false;
+
+                // Si ya está en Abiertos, verificamos si el nuevo camino es más corto
+                for (int i = 0; i < abiertos.Count; i++)
+                {
+                    if (hijo.EsIgual(abiertos[i]))
+                    {
+                        if (hijo.nivel < abiertos[i].nivel)
+                        {
+                            abiertos[i] = hijo; // Actualizamos el costo
+                        }
+                        Encontrado = true;
+                        break;
+                    }
+                }
+
+                if (Encontrado) continue;
+
+                // Si ya está en Cerrados, solo lo ignoramos si el costo guardado es mejor o igual
+                foreach (var c in cerrados)
+                {
+                    if (hijo.EsIgual(c))
+                    {
+                        if (hijo.nivel >= c.nivel)
+                        {
+                            Encontrado = true;
+                        }
+                        break;
+                    }
+                }
+
+                if (!Encontrado)
+                {
+                    HijosDepurados.Add(hijo);
+                }
+            }
+            return HijosDepurados;
+        }
+
 
     }
 }
